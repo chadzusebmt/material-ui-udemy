@@ -1,7 +1,9 @@
 
 
-#[Typography] = > typography has variant 
+# 19 [Typography] = > typography has variant 
 you can also customised it inside the the Them, you can customised the fontWeight and the font size, to find more about it you find it unde typography variant on material UI
 - variant
 - color
 Note: you can also use inline style if you do not want to use the theme
+
+20 [Inline styles] (Style Basics)
