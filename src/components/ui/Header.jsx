@@ -35,7 +35,7 @@ function Header(props) {
     <React.Fragment>
     <ElevationScroll>
        <AppBar position="fixed" color="primary">
-         <Toolbar>
+         <Toolbar disbaleGutters>
           <Typography variant="h3" color="secondary"> Logo </Typography>  
             </Toolbar>
        </AppBar>

@@ -7,3 +7,5 @@ you can also customised it inside the the Them, you can customised the fontWeigh
 Note: you can also use inline style if you do not want to use the theme
 
 20 [Inline styles] (Style Basics)
+
+21 [Remove  default padding from components] use disbaleGutters on the components
