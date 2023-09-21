@@ -33,6 +33,13 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography.tab,
     minWidth: 10,
     marginLeft: "25px",
+  },
+  button:{
+    ...theme.typography.estimate,
+    borderRadius: "50px",
+    marginLeft: "50px",
+    marginLeft: "25px",
+    height: "45px",
   }
 }));
 
@@ -53,6 +60,9 @@ function Header(props) {
             <Tab label="About Us" className={classes.tab}></Tab>
             <Tab label="Contact Us" className={classes.tab}></Tab>
           </Tabs>
+
+          <Button variant="contained" color="secondary" className={classes.button}> Free Estimate</Button>
+
         </Toolbar>
        </AppBar>
     </ElevationScroll>

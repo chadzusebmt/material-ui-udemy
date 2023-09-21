@@ -16,3 +16,5 @@ Note: you can also use inline style if you do not want to use the theme
 
 25 [Button] Check the doc to learn more about the button and how to use props for customised buttons
 
+26 [Button] btn style
+
