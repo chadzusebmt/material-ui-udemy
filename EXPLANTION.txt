@@ -11,3 +11,6 @@ Note: you can also use inline style if you do not want to use the theme
 21 [Remove  default padding from components] use disbaleGutters on the components
 
 23 [Tabs] Refer to the documentation for more tabs and different kinds of tabs you will need
+
+24 [Tabs % Tab] Here you learn how to use [tabs] to link it with routes andd add style and classe, also use the global style
+

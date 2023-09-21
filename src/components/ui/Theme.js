@@ -22,6 +22,11 @@ export default createMuiTheme({
             h3:{
                 fontWeight: '3000',
             },
+            tab:{
+                fontWeight: '700',
+                fontSize: "1rem",
+                textTransform: "none",
+            }
            
         }
     }
