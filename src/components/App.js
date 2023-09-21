@@ -1,6 +1,6 @@
 import Header from './ui/Header';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import theme from './ui/Theme';
 
 function App() {
@@ -8,17 +8,17 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
-        <Switch>
-          <Route exact path="/" component={() => <div> Home </div>} />
-          <Route exact path="/services" component={() => <div> Service </div>} />
-          <Route exact path="/customsoftware" component={() => <div> Custom Software </div>} />
-          <Route exact path="/mobileapps" component={() => <div> Mobile App </div>} />
-          <Route exact path="/websites" component={() => <div> Website </div>} />
-          <Route exact path="/revolution" component={() => <div> Revolution </div>} />
-          <Route exact path="/about" component={() => <div> About Us </div>} />
-          <Route exact path="/contact" component={() => <div> Contact Us </div>} />
-          <Route exact path="/estimate" component={() => <div> Estimate </div>} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<div> Home </div>} />
+          <Route path="/services" element={<div> Service </div>} />
+          <Route path="/customsoftware" element={<div> Custom Software </div>} />
+          <Route path="/mobileapps" element={<div> Mobile App </div>} />
+          <Route path="/websites" element={<div> Website </div>} />
+          <Route path="/revolution" element={<div> Revolution </div>} />
+          <Route path="/about" element={<div> About Us </div>} />
+          <Route path="/contact" element={<div> Contact Us </div>} />
+          <Route path="/estimate" element={<div> Estimate </div>} />
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   );

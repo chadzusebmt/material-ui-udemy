@@ -20,4 +20,11 @@ Note: you can also use inline style if you do not want to use the theme
 
 27 [Styling Tabs, add event handlers]  
 
-28 [React Router Navigation] Linking tabs with your routes
+28 [LINK TABS WITH ROUTES] 
+you can link tabs to your routes by simply adding components with the props call link and to the routes 
+Ex:   
+<Tab component={Link} to="/" />
+<Tab component={Link} to="/services" />
+
+29 [Make the tab to return to the selected tab after the has refresh]
+Note: use [disableRipple] to remove the ripple effect on a Button
