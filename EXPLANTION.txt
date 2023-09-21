@@ -28,3 +28,5 @@ Ex:
 
 29 [Make the tab to return to the selected tab after the has refresh]
 Note: use [disableRipple] to remove the ripple effect on a Button
+
+31 [Responsive Design with Material]
