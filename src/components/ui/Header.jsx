@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { Button, Tab, Tabs, Typography } from "@material-ui/core";
 import { makeStyles } from '@material-ui/styles';
-
-
 
 
 function ElevationScroll(props){
@@ -19,7 +17,6 @@ function ElevationScroll(props){
         elevation: trigger ? 4 : 0
     })
 }
-
 
 const useStyles = makeStyles(theme => ({
   //this will access the margin from the material theme and apply it on the toolbar
@@ -46,6 +43,10 @@ const useStyles = makeStyles(theme => ({
 function Header(props) {
   const classes = useStyles();
 
+  const [value, setValue] = useState(0)
+  const handleChange = (e, value) => setValue(value)
+  
+
   return(
     <React.Fragment>
     <ElevationScroll>
@@ -53,7 +54,7 @@ function Header(props) {
          <Toolbar disbaleGutters>
           <Typography variant="h3" color="secondary"> Logo </Typography>  
 
-          <Tabs className={classes.tabContainer}>
+          <Tabs value={value} onChange={handleChange} className={classes.tabContainer} indicatorColor="primary">
             <Tab label="Home" className={classes.tab}></Tab>
             <Tab label="Services" className={classes.tab}></Tab>
             <Tab label="The revolution" className={classes.tab}></Tab>
