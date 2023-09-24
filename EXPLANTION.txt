@@ -36,3 +36,4 @@ Note: use [disableRipple] to remove the ripple effect on a Button
 35 [Stying Menus]
 
 36 [Refactor the menu]
+37 [Refactor the menu with switch case]
