@@ -40,3 +40,4 @@ Note: use [disableRipple] to remove the ripple effect on a Button
 38 [Best practice for responsive design with Material UI explaination only ]
 39 [Search for Responsive UI on the documentation to understand the design pattern] Check Breakpoints under the documentation to understand the design pattern 
 [xs : 0; sm: 600; md : 900; lg : 1200; xl : 19220]
+40 [The lecturer note about how to use unit for your webiste]
