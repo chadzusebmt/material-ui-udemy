@@ -44,3 +44,5 @@ Note: use [disableRipple] to remove the ripple effect on a Button
 41 [Learn to style on different screen very important to learn this]
 42 [Drawer overview] Go to the documentation to learn more about the drawer and the design pattern
 Note: you will find a tenmplate made for you already you do not need to code it from scratch
+43 [Implementing the drawer inside our application]
+Note :  npm install @material-ui/icons@4.4.3

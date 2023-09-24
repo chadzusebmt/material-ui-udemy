@@ -5,6 +5,9 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { Button, Menu, MenuItem, Tab, Tabs, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 // Media query
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -27,30 +30,33 @@ function Header(props) {
 
   // media query hook
   const theme = useTheme();
+  const isBrowser = typeof window !== 'undefined';
+  const iOS = isBrowser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   // end
 
   const [value, setValue] = useState(0);
 
   // for the dropdown
+  const [openDrawer, setOpenDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const handleChange = (e, value) => setValue(value);
+  const handleChange = (e, newValue) => setValue(newValue);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
-    setOpen(true);
+    setOpenMenu(true);
   };
   const handleClose = (e) => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
   };
 
   const handleMenuClick = (e, i) => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
     setSelectedIndex(i);
   };
 
@@ -184,7 +190,7 @@ function Header(props) {
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
-        open={open}
+        openMenu={openMenu}
         onClose={handleClose}
         MenuListProps={{ onMouseLeave: handleClose }}
         classes={{ paper: classes.menu }}
@@ -207,6 +213,120 @@ function Header(props) {
           </MenuItem>
         ))}
       </Menu>
+    </React.Fragment>
+  );
+
+  const drawer = (
+    <React.Fragment>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+        // classes={{ paper: classes.drawer }}
+      >
+        {/* <div className={classes.toolbarMargin} /> */}
+        {/* <List disablePadding>
+          {routes.map((route) =>
+            route.name === 'Services' ? (
+              <ExpansionPanel elevation={0} key={route.name} classes={{ root: classes.expansion }}>
+                <ExpansionPanelSummary classes={{ root: classes.expansionSummary }} expandIcon={<ExpandMoreIcon color="secondary" />}>
+                  <ListItemText
+                    className={classes.drawerItem}
+                    disableTypography
+                    style={{ opacity: props.value === 1 ? 1 : null }}
+                    onClick={() => {
+                      setOpenDrawer(false);
+                      props.setValue(route.activeIndex);
+                    }}
+                  >
+                    <Link href={route.link} color="inherit">
+                      {route.name}
+                    </Link>
+                  </ListItemText>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails classes={{ root: classes.expansionDetails }}>
+                  <Grid container direction="column">
+                    {menuOptions.map((route) => (
+                      <Grid item>
+                        <ListItem
+                          divider
+                          key={`${route}${route.seleselectedIndex}`}
+                          button
+                          component={Link}
+                          href={route.link}
+                          selected={
+                            props.selectedIndex === route.selectedIndex && props.value === 1 && window.location.pathname !== '/services'
+                          }
+                          classes={{ selected: classes.drawerItemSelected }}
+                          onClick={() => {
+                            setOpenDrawer(false);
+                            props.setSelectedIndex(route.selectedIndex);
+                          }}
+                        >
+                          <ListItemText className={classes.drawerItem} disableTypography>
+                            {route.name
+                              .split(' ')
+                              .filter((word) => word !== 'Development')
+                              .join(' ')}
+                            <br />
+                            <span style={{ fontSize: '0.75rem' }}>Development</span>
+                          </ListItemText>
+                        </ListItem>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+            ) : (
+              <ListItem
+                divider
+                key={`${route}${route.activeIndex}`}
+                button
+                component={Link}
+                href={route.link}
+                selected={props.value === route.activeIndex}
+                classes={{ selected: classes.drawerItemSelected }}
+                onClick={() => {
+                  setOpenDrawer(false);
+                  props.setValue(route.activeIndex);
+                }}
+              >
+                <ListItemText className={classes.drawerItem} disableTypography>
+                  {route.name}
+                </ListItemText>
+              </ListItem>
+            )
+          )}
+          <ListItem
+            onClick={() => {
+              setOpenDrawer(false);
+              props.setValue(false);
+              ReactGA.event({
+                category: 'Estimate',
+                action: 'Mobile Header Pressed'
+              });
+            }}
+            divider
+            button
+            component={Link}
+            classes={{
+              root: classes.drawerItemEstimate,
+              selected: classes.drawerItemSelected
+            }}
+            href="/estimate"
+            selected={props.value === 5}
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Free Estimate
+            </ListItemText>
+          </ListItem>
+        </List> */}
+      </SwipeableDrawer>
+      <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
+        <MenuIcon className={classes.drawerIcon} />
+      </IconButton>
     </React.Fragment>
   );
 
@@ -244,7 +364,7 @@ function Header(props) {
                 </svg>
               </Button>
             </Typography>
-            {matches ? null : tabs}
+            {matches ? drawer : tabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
@@ -304,5 +424,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#0B72B9',
     color: 'white',
     borderRadius: '0px'
+  },
+  drawerIconContainer: {
+    marginLeft: 'auto',
+    '&:hover': {
+      backgroundColor: 'transparent'
+    }
+  },
+  drawerIcon: {
+    height: '50px',
+    width: '50px'
   }
 }));
