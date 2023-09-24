@@ -26,6 +26,7 @@ function Header(props) {
   // for the dropdown
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleChange = (e, value) => setValue(value);
 
@@ -37,6 +38,47 @@ function Header(props) {
     setAnchorEl(null);
     setOpen(false);
   };
+
+  const handleMenuClick = (e, i) => {
+    setAnchorEl(null);
+    setOpen(false);
+    setSelectedIndex(i);
+  };
+
+  const menuOptions = [
+    {
+      name: 'Services',
+      link: '/services'
+    },
+    {
+      name: 'Custom software developement',
+      link: '/customsoftware'
+    },
+    {
+      name: 'Mobile App Development',
+      link: '/mobileapps'
+    },
+    {
+      name: 'Website Developement',
+      link: '/websites'
+    },
+    {
+      name: 'Revolution ',
+      link: '/revolution'
+    },
+    {
+      name: 'About Us',
+      link: '/about'
+    },
+    {
+      name: 'Contact Us',
+      link: '/contact'
+    },
+    {
+      name: 'Estimate',
+      link: '/estimate'
+    }
+  ];
 
   // this persist the tab to be hilighted even if the user refresh the page
   useEffect(() => {
@@ -86,47 +128,31 @@ function Header(props) {
               Free Estimate
             </Button>
 
-            <Menu id="simple-menu" anchorEl={anchorEl} open={open} onClose={handleClose} MenuListProps={{ onMouseLeave: handleClose }}>
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                component={Link}
-                to="/services"
-              >
-                Services
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                component={Link}
-                to="/customsoftware"
-              >
-                Custom Software Development
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                component={Link}
-                to="/mobileapps"
-              >
-                Mobile App Development{' '}
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                component={Link}
-                to="/websites"
-              >
-                Website Development
-              </MenuItem>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{ onMouseLeave: handleClose }}
+              classes={{ paper: classes.menu }}
+              elevation={0}
+            >
+              {menuOptions.map((option, i) => (
+                <MenuItem
+                  key={option}
+                  component={Link}
+                  to={option.link}
+                  classes={{ root: classes.menu }}
+                  onClick={(e) => {
+                    handleMenuClick(e);
+                    setValue(1);
+                    handleClose();
+                  }}
+                  selected={i === selectedIndex && value === 1}
+                >
+                  {option.name}
+                </MenuItem>
+              ))}
             </Menu>
           </Toolbar>
         </AppBar>
@@ -165,5 +191,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '50px',
     marginLeft: '25px',
     height: '45px'
+  },
+  menu: {
+    backgroundColor: '#0B72B9',
+    color: 'white',
+    borderRadius: '0px'
   }
 }));
