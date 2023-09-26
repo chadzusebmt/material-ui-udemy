@@ -13,6 +13,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 function ElevationScroll(props) {
   const { children } = props;
   const trigger = useScrollTrigger({
@@ -323,6 +327,27 @@ function Header(props) {
             </ListItemText>
           </ListItem>
         </List> */}
+
+        <List disablePadding>
+          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/">
+            <ListItemText disableTypography>Home</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/services">
+            <ListItemText disableTypography>Services</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/revolution">
+            <ListItemText disableTypography>The Revolution</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/about">
+            <ListItemText disableTypography>About Us</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/contact">
+            <ListItemText disableTypography>Contact Us</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/estimate">
+            <ListItemText disableTypography>Free Estimate</ListItemText>
+          </ListItem>
+        </List>
       </SwipeableDrawer>
       <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
         <MenuIcon className={classes.drawerIcon} />

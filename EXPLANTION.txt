@@ -47,3 +47,7 @@ Note: you will find a tenmplate made for you already you do not need to code it 
 43 [Implementing the drawer inside our application]
 Note :  npm install @material-ui/icons@4.4.3
 44 [ Lists ] search for lists in the documentation to understand the design pattern 
+45 [Lists in details] : 
+Note: disableTypography remove the color blue that come with the list
+Note: disablePadding remove the extra padding that comes with the list
+Note: you can add the following prop on the list like: [divider, button]
