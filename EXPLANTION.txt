@@ -51,3 +51,6 @@ Note :  npm install @material-ui/icons@4.4.3
 Note: disableTypography remove the color blue that come with the list
 Note: disablePadding remove the extra padding that comes with the list
 Note: you can add the following prop on the list like: [divider, button]
+
+46 [Styling Lists] 
+Note: you can apply multiple styling like this className={[classes.drawerItem, classes.className]}
